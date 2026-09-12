@@ -21,5 +21,5 @@ class Api_Service:
         self.chat_bot_history.add_request(chat_request.message)
        
         response = self.llm_client.call_google_openai(prompt)
-        self.chat_bot_history.add_response(prompt)
+        self.chat_bot_history.add_response(response)
         return response
