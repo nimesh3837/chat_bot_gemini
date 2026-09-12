@@ -2,10 +2,14 @@ import httpx
 from model import ChatReponse,ChatRequest
 from dotenv import load_dotenv
 import os
+import streamlit as st
 load_dotenv()
+
 class ClientApiService:
     def __init__(self):
         self.base_url = os.getenv("base_url")
+        if not self.base_url:
+            self.base_url = st.secrets["base_url"]
     
     def call_chat_api(self,message:str)->str:
         url = self.base_url + "/chat_google_bot"
